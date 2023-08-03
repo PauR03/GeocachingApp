@@ -215,16 +215,7 @@
             checkInput()
             let date = new Date()
 
-            $.getJSON("./names.json", (data) => {
-
-                const clavesRevertidas = Object.keys(data).reverse();
-
-                clavesRevertidas.forEach(clave => {
-                    const valor = data[clave];
-                    console.log(`${clave}: ${valor}`);
-                });
-
-            })
+            
 
             $("button").click((e) => {
                 let name = $("input").val()
