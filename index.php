@@ -211,35 +211,44 @@
     </main>
     <script>
         // alert("Altura de la pantalla: " + window.innerHeight + " píxeles\nAncho de la pantalla: " + window.innerWidth + " píxeles");
-        $(document).ready(() => {
-            checkInput()
-            let date = new Date()
+        // $(document).ready(() => {
+        //     checkInput()
+        //     let date = new Date()
 
-            
+        //     $.getJSON("./names.json", (data) => {
 
-            $("button").click((e) => {
-                let name = $("input").val()
+        //         const clavesRevertidas = Object.keys(data).reverse();
 
-                if (name != "") {
-                    if (!localStorage.getItem("xd")) {
-                        localStorage.setItem("xd", "xd")
-                    }
+        //         clavesRevertidas.forEach(clave => {
+        //             const valor = data[clave];
+        //             console.log(`${clave}: ${valor}`);
+        //         });
 
-                    alert("xd")
-                    checkInput()
-                }
+        //     })
 
-            })
+        //     $("button").click((e) => {
+        //         let name = $("input").val()
 
-            function checkInput() {
-                if (localStorage.getItem("xd")) {
-                    $("button").attr("disabled", "true")
-                }
-            }
+        //         if (name != "") {
+        //             if (!localStorage.getItem("xd")) {
+        //                 localStorage.setItem("xd", "xd")
+        //             }
+
+        //             alert("xd")
+        //             checkInput()
+        //         }
+
+        //     })
+
+        //     function checkInput() {
+        //         if (localStorage.getItem("xd")) {
+        //             $("button").attr("disabled", "true")
+        //         }
+        //     }
 
 
 
-        })
+        // })
     </script>
 </body>
 
