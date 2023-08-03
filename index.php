@@ -213,6 +213,18 @@
         // alert("Altura de la pantalla: " + window.innerHeight + " píxeles\nAncho de la pantalla: " + window.innerWidth + " píxeles");
         $(document).ready(() => {
             checkInput()
+            let date = new Date()
+
+            $.getJSON("./names.json", (data) => {
+
+                const clavesRevertidas = Object.keys(data).reverse();
+
+                clavesRevertidas.forEach(clave => {
+                    const valor = data[clave];
+                    console.log(`${clave}: ${valor}`);
+                });
+
+            })
 
             $("button").click((e) => {
                 let name = $("input").val()
@@ -233,6 +245,9 @@
                     $("button").attr("disabled", "true")
                 }
             }
+
+
+
         })
     </script>
 </body>
