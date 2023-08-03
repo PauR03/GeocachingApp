@@ -211,44 +211,44 @@
     </main>
     <script>
         // alert("Altura de la pantalla: " + window.innerHeight + " píxeles\nAncho de la pantalla: " + window.innerWidth + " píxeles");
-        // $(document).ready(() => {
-        //     checkInput()
-        //     let date = new Date()
+        $(document).ready(() => {
+            checkInput()
+            let date = new Date()
 
-        //     $.getJSON("./names.json", (data) => {
+            $.getJSON("./names.json", (data) => {
 
-        //         const clavesRevertidas = Object.keys(data).reverse();
+                const clavesRevertidas = Object.keys(data).reverse();
 
-        //         clavesRevertidas.forEach(clave => {
-        //             const valor = data[clave];
-        //             console.log(`${clave}: ${valor}`);
-        //         });
+                clavesRevertidas.forEach(clave => {
+                    const valor = data[clave];
+                    console.log(`${clave}: ${valor}`);
+                });
 
-        //     })
+            })
 
-        //     $("button").click((e) => {
-        //         let name = $("input").val()
+            $("button").click((e) => {
+                let name = $("input").val()
 
-        //         if (name != "") {
-        //             if (!localStorage.getItem("xd")) {
-        //                 localStorage.setItem("xd", "xd")
-        //             }
+                if (name != "") {
+                    if (!localStorage.getItem("xd")) {
+                        localStorage.setItem("xd", "xd")
+                    }
 
-        //             alert("xd")
-        //             checkInput()
-        //         }
+                    alert("xd")
+                    checkInput()
+                }
 
-        //     })
+            })
 
-        //     function checkInput() {
-        //         if (localStorage.getItem("xd")) {
-        //             $("button").attr("disabled", "true")
-        //         }
-        //     }
+            function checkInput() {
+                if (localStorage.getItem("xd")) {
+                    $("button").attr("disabled", "true")
+                }
+            }
 
 
 
-        // })
+        })
     </script>
 </body>
 
