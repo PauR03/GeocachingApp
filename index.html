@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 
     <title>¡ENHORABUENA!</title>
-    <!-- <link rel="shortcut icon" href="favicon.png" type="image/x-icon"> -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <style>
         html,
@@ -179,33 +179,11 @@
     <main>
         <h1>¡ENHORABUENA!</h1>
         <h3>HAS ENCONTRADO EL GEOCACHER DE:<br> “EL PARQUE DE LA MARIPOSA”</h3>
-        <!-- <span class="h1">¡ENHORABUENA!</span>
-        <span class="h3">HAS ENCONTRADO EL GEOCACHER DE:<br> “EL PARQUE DE LA MARIPOSA”</span> -->
 
         <input type="text" placeholder="Tu nombre" maxlength="23">
         <button>ENVIAR</button>
 
         <div id="winnerList">
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
-            <span class="winner">02/08/2023 - Pau Rius Noriega</span>
 
         </div>
     </main>
@@ -219,22 +197,45 @@
 
                 const clavesRevertidas = Object.keys(data).reverse();
 
-                clavesRevertidas.forEach(clave => {
-                    const valor = data[clave];
-                    console.log(`${clave}: ${valor}`);
+                clavesRevertidas.forEach(fecha => {
+                    const nombre = data[fecha];
+
+                    $("#winnerList").append(
+                        $("<span>", {
+                            class: "winner",
+                            text: fecha.split(",")[0] + " - " + nombre
+                        })
+                    )
                 });
 
             })
 
             $("button").click((e) => {
                 let name = $("input").val()
+                let actualDate = date.toLocaleString()
 
                 if (name != "") {
                     if (!localStorage.getItem("xd")) {
-                        localStorage.setItem("xd", "xd")
+                        // localStorage.setItem("xd", "xd")
                     }
 
-                    alert("xd")
+                    $.ajax({
+                        type: "POST",
+                        url: "agregarDatos.php",
+                        data: { name: name, actualDate: actualDate },
+                        dataType: "dataType",
+                        success: function (response) {
+                            console.log("Donete")
+
+                            $("#winnerList").append(
+                                $("<span>", {
+                                    class: "winner",
+                                    text: actualDate.split(",")[0] + " - " + name
+                                })
+                            )
+                        }
+                    });
+
                     checkInput()
                 }
 
@@ -246,7 +247,7 @@
                 }
             }
 
-
+            console.log()
 
         })
     </script>
