@@ -22,12 +22,15 @@
         }
 
         body {
+            display: flex;
+            justify-content: center;
             background: #854EB5;
         }
 
         main {
             width: 100vw;
             height: 100vh;
+            max-width: 450px;
 
             display: flex;
             flex-direction: column;
@@ -220,19 +223,24 @@
                     }
 
                     $.ajax({
-                        type: "POST",
-                        url: "agregarDatos.php",
+                        url: "./agregarDatos.php",
+                        type: "GET",
                         data: { name: name, actualDate: actualDate },
                         dataType: "dataType",
+                        error: function(error){
+                            console.log(error)
+                            console.log(JSON.parse(decodeURIComponent(error.responseText)))
+                        },
                         success: function (response) {
                             console.log("Donete")
+                            // console.log(response)
 
-                            $("#winnerList").append(
-                                $("<span>", {
-                                    class: "winner",
-                                    text: actualDate.split(",")[0] + " - " + name
-                                })
-                            )
+                            // $("#winnerList").append(
+                            //     $("<span>", {
+                            //         class: "winner",
+                            //         text: decodeURIComponent(actualDate.split(",")[0] + " - " + name)
+                            //     })
+                            // )
                         }
                     });
 
@@ -246,9 +254,6 @@
                     $("button").attr("disabled", "true")
                 }
             }
-
-            console.log()
-
         })
     </script>
 </body>
