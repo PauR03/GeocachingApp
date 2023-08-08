@@ -197,16 +197,15 @@
             let date = new Date()
 
             $.getJSON("./names.json", (data) => {
-
                 const clavesRevertidas = Object.keys(data).reverse();
 
                 clavesRevertidas.forEach(fecha => {
-                    const nombre = data[fecha];
+                    const { name } = data[fecha];
 
                     $("#winnerList").append(
                         $("<span>", {
                             class: "winner",
-                            text: fecha.split(",")[0] + " - " + nombre
+                            text: decodeURIComponent(fecha.split(",")[0] + " - " + name)
                         })
                     )
                 });
@@ -219,28 +218,34 @@
 
                 if (name != "") {
                     if (!localStorage.getItem("xd")) {
-                        // localStorage.setItem("xd", "xd")
+                        localStorage.setItem("xd", "xd")
                     }
 
                     $.ajax({
                         url: "./agregarDatos.php",
                         type: "GET",
                         data: { name: name, actualDate: actualDate },
-                        dataType: "dataType",
-                        error: function(error){
-                            console.log(error)
-                            console.log(JSON.parse(decodeURIComponent(error.responseText)))
-                        },
+                        dataType: "json",
                         success: function (response) {
-                            console.log("Donete")
-                            // console.log(response)
-
-                            // $("#winnerList").append(
-                            //     $("<span>", {
-                            //         class: "winner",
-                            //         text: decodeURIComponent(actualDate.split(",")[0] + " - " + name)
-                            //     })
-                            // )
+                            console.log(response)
+                            if ($("#winnerList .winner").length === 0) {
+                                $("#winnerList").append(
+                                    $("<span>", {
+                                        class: "winner",
+                                        text: decodeURIComponent(actualDate.split(",")[0] + " - " + name)
+                                    })
+                                )
+                            } else {
+                                $("#winnerList span:first-child").before(
+                                    $("<span>", {
+                                        class: "winner",
+                                        text: decodeURIComponent(actualDate.split(",")[0] + " - " + name)
+                                    })
+                                );
+                            }
+                        },
+                        error: function (error) {
+                            console.error(error.responseText)
                         }
                     });
 
@@ -249,9 +254,11 @@
 
             })
 
+
             function checkInput() {
                 if (localStorage.getItem("xd")) {
                     $("button").attr("disabled", "true")
+                    $("input").attr("disabled", "true").val("")
                 }
             }
         })

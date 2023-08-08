@@ -1,6 +1,26 @@
 {
-    "4\/8\/2023, 19:34:21": "Pautronix996",
-    "4\/8\/2023, 19:36:01": "Puto",
-    "5\/8\/2023, 19:20:08": "sdasd",
-    "5\/8\/2023, 19:22:27": "asdasdfdgdf"
+    "7/8/2023, 12:37:34": {
+        "name": "Pau Rius (creador)",
+        "ip": "::1",
+        "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.21929.110 Safari/537.36 Avast/115.0.21929.110",
+        "lenguage": "es-ES,es;q=0.9"
+    },
+    "7/8/2023, 12:44:24": {
+        "name": "Puto 😃😃😃",
+        "ip": "::1",
+        "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.21929.110 Safari/537.36 Avast/115.0.21929.110",
+        "lenguage": "es-ES,es;q=0.9"
+    },
+    "7/8/2023, 12:51:54": {
+        "name": "Hola",
+        "ip": "192.168.0.145",
+        "browser": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36",
+        "lenguage": "es-ES,es;q=0.9,en;q=0.8"
+    },
+    "7/8/2023, 22:26:29": {
+        "name": "asdasd",
+        "ip": "::1",
+        "browser": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.21929.110 Mobile Safari/537.36",
+        "lenguage": "es-ES,es;q=0.9"
+    }
 }

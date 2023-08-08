@@ -1,8 +1,15 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
 
 // Datos a agregar o actualizar en el archivo JSON
 $nuevos_datos = [
-    $_GET["actualDate"] => $_GET["name"]
+    $_GET["actualDate"] => [
+        "name" => $_GET["name"],
+        "ip" => $_SERVER['REMOTE_ADDR'],
+        "browser" => $_SERVER['HTTP_USER_AGENT'],
+        "lenguage" => $_SERVER['HTTP_ACCEPT_LANGUAGE']
+    ]
 ];
 
 // Ruta del archivo JSON
@@ -31,8 +38,5 @@ $response = array(
     'data' => [$_GET["actualDate"] => $_GET["name"]]
 );
 
-header('Content-Type: application/json', true, 200);
-echo json_encode($response);
-
-
+echo json_encode($response,JSON_FORCE_OBJECT);
 ?>
